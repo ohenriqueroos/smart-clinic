@@ -2,9 +2,9 @@ import { ThemeOptions } from "@mui/material";
 import { PaletteColor } from "./models/theme";
 
 const primaryColor: PaletteColor = {
-  main: "#2d398f",
-  light: "#5760A5",
-  dark: "#1F2764",
+  main: "#30909c",
+  light: "#03dbeb",
+  dark: "#025a5a",
   contrastText: "#FFFFFF",
 };
 

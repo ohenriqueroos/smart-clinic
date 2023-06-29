@@ -1,13 +1,22 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Button } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import { Link } from "react-router-dom";
+import RegistersHeader from "../../components/RegistersHeader/RegistersHeader";
 
 const MenusRegister = () => {
   return (
     <Box>
-      <Grid>
-        <Typography variant="h5" sx={{ fontWeight: 700 }}>
-          Menus Register
-        </Typography>
-      </Grid>
+      <RegistersHeader
+        title="Cadastro de Menus"
+        subtitle="Tela para cadastro, edição e exclusão de menusu"
+        button={
+          <Button variant="contained" startIcon={<AddIcon />}>
+            <Link to="/menus-register/new" style={{ color: "#fff" }}>
+              Novo Menu
+            </Link>
+          </Button>
+        }
+      />
     </Box>
   );
 };

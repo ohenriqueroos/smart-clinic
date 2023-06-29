@@ -4,12 +4,12 @@
       {
         "id": "1",
         "path": "/",
-        "name": "Home"
+        "name": "Início"
       },
       {
         "id": "2",
         "path": "/menus-register",
-        "name": "Menus Register"
+        "name": "Cadastro de Menus"
       }
     ]
   },
