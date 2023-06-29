@@ -1,0 +1,15 @@
+{
+  "menus": {
+    "routes": [
+      {
+        "id": "1",
+        "path": "/",
+        "name": "Home"
+      }
+    ]
+  },
+  "teste": {
+    "id": "sadas",
+    "name": "Teste"
+  }
+}
