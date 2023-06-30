@@ -1,18 +1,16 @@
 {
-  "menus": {
-    "routes": [
-      {
-        "id": "1",
-        "path": "/",
-        "name": "Início"
-      },
-      {
-        "id": "2",
-        "path": "/menus-register",
-        "name": "Cadastro de Menus"
-      }
-    ]
-  },
+  "menus": [
+    {
+      "path": "/",
+      "name": "Início",
+      "id": "0.8470057868953453"
+    },
+    {
+      "path": "/menus-register",
+      "name": "Cadastro de Menus",
+      "id": "0.3836787999002116"
+    }
+  ],
   "teste": {
     "id": "sadas",
     "name": "Teste"

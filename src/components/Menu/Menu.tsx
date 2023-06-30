@@ -109,7 +109,7 @@ const Menu = ({ children }: any) => {
 
   const getMenus = useCallback(async () => {
     const response = await menusService.getRoutes();
-    setMenus(response.data.routes);
+    setMenus(response.data);
   }, []);
 
   useEffect(() => {
@@ -150,7 +150,7 @@ const Menu = ({ children }: any) => {
         </DrawerHeader>
         <Divider />
         <List>
-          {menus.map((menu: any) => (
+          {menus?.map((menu: IMenus) => (
             <ListItem key={menu.id} disablePadding sx={{ display: "block" }}>
               <Link to={menu.path} style={{ color: "#000" }}>
                 <ListItemButton

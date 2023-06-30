@@ -3,7 +3,7 @@ import { Divider, Grid, Typography } from "@mui/material";
 interface IRegistersHeader {
   title: string;
   subtitle: string;
-  button: JSX.Element;
+  button?: JSX.Element;
 }
 
 const RegistersHeader = ({ title, subtitle, button }: IRegistersHeader) => {
