@@ -11,11 +11,8 @@ const MenusRegisterForm = () => {
         title="Menu"
         subtitle="Tela para cadastro e edição de menu"
       />
-      <FormContainer<TCreateUserForm>
-        service={menusService}
-        formSchema={menusFormSchema}
-      >
-        <Grid item xs={12} sm={6}>
+      <FormContainer />
+      {/* <Grid item xs={12} sm={6}>
           <TextField
             label="Link"
             size="small"
@@ -38,8 +35,8 @@ const MenusRegisterForm = () => {
             // helperText={errors.path?.message || ""}
             fullWidth
           />
-        </Grid>
-      </FormContainer>
+        </Grid> */}
+      {/* </FormContainer> */}
     </Box>
   );
 };

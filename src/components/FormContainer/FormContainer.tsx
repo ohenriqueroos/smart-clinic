@@ -3,31 +3,37 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ZodType } from "zod";
 import { useNavigate } from "react-router-dom";
+import { z } from "zod";
+import { menusService } from "../../services/menus.service";
+import { v4 as uuidv4 } from "uuid";
 
-interface IFormContainer<T extends object> {
-  formSchema: ZodType<T>;
-  service: any;
-  children: any;
-}
+// interface IFormContainer<T extends object> {
+//   formSchema: ZodType<T>;
+//   service: any;
+// }
 
-const FormContainer = <T extends object>({
-  formSchema,
-  service,
-  children,
-}: IFormContainer<T>) => {
+const FormContainer = ({}) => {
   const navigate = useNavigate();
+
+  const menusFormSchema = z.object({
+    id: z.string().default(uuidv4()),
+    path: z.string().nonempty("O link é obrigatório"),
+    name: z.string().nonempty("O nome é obrigatório"),
+  });
+
+  type TCreateUserForm = z.infer<typeof menusFormSchema>;
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<T>({
-    resolver: zodResolver(formSchema),
+  } = useForm<TCreateUserForm>({
+    resolver: zodResolver(menusFormSchema),
   });
 
-  const submitHandler = (data: T) => {
+  const submitHandler = (data: TCreateUserForm) => {
     if (data) {
-      service.save({ ...data, id: Math.random().toString() });
+      menusService.save(data);
       navigate(-1);
     }
   };
@@ -40,7 +46,29 @@ const FormContainer = <T extends object>({
     <Paper elevation={0} sx={{ marginTop: 4, marginRight: 100 }}>
       <form onSubmit={handleSubmit(submitHandler)}>
         <Grid container justifyContent={"flex-start"} spacing={2}>
-          {children}
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label="Link"
+              size="small"
+              type="text"
+              autoFocus
+              error={errors.path === undefined ? false : true}
+              {...register("path")}
+              helperText={errors.path?.message || ""}
+              fullWidth
+            />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              label="Name"
+              size="small"
+              type="text"
+              error={errors.name === undefined ? false : true}
+              {...register("name")}
+              helperText={errors.name?.message || ""}
+              fullWidth
+            />
+          </Grid>
         </Grid>
         <Grid
           container
