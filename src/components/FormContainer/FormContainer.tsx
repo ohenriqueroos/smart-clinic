@@ -1,39 +1,35 @@
-import { Button, Grid, Paper, TextField } from "@mui/material";
-import { useForm } from "react-hook-form";
+import { Button, Grid, Paper } from "@mui/material";
+import { UseFormRegister, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ZodType } from "zod";
 import { useNavigate } from "react-router-dom";
-import { z } from "zod";
-import { menusService } from "../../services/menus.service";
-import { v4 as uuidv4 } from "uuid";
+import { TMenusForm } from "../../pages/MenusRegister/MenusRegisterForm/MenusFormSchema";
+import { ReactNode } from "react";
 
-// interface IFormContainer<T extends object> {
-//   formSchema: ZodType<T>;
-//   service: any;
-// }
+interface IFormContainer<T extends object> {
+  formSchema: ZodType<T>;
+  saveData: (data: any) => void;
+  children: (register: UseFormRegister<T>) => ReactNode;
+}
 
-const FormContainer = ({}) => {
+const FormContainer = ({
+  formSchema,
+  saveData,
+  children,
+}: IFormContainer<any>) => {
   const navigate = useNavigate();
-
-  const menusFormSchema = z.object({
-    id: z.string().default(uuidv4()),
-    path: z.string().nonempty("O link é obrigatório"),
-    name: z.string().nonempty("O nome é obrigatório"),
-  });
-
-  type TCreateUserForm = z.infer<typeof menusFormSchema>;
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<TCreateUserForm>({
-    resolver: zodResolver(menusFormSchema),
+  } = useForm<TMenusForm>({
+    resolver: zodResolver(formSchema),
   });
 
-  const submitHandler = (data: TCreateUserForm) => {
+  const submitHandler = (data: TMenusForm) => {
     if (data) {
-      menusService.save(data);
+      saveData(data);
       navigate(-1);
     }
   };
@@ -43,32 +39,17 @@ const FormContainer = ({}) => {
   };
 
   return (
-    <Paper elevation={0} sx={{ marginTop: 4, marginRight: 100 }}>
+    <Paper elevation={0} sx={{ marginTop: 4 }}>
       <form onSubmit={handleSubmit(submitHandler)}>
-        <Grid container justifyContent={"flex-start"} spacing={2}>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              label="Link"
-              size="small"
-              type="text"
-              autoFocus
-              error={errors.path === undefined ? false : true}
-              {...register("path")}
-              helperText={errors.path?.message || ""}
-              fullWidth
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              label="Name"
-              size="small"
-              type="text"
-              error={errors.name === undefined ? false : true}
-              {...register("name")}
-              helperText={errors.name?.message || ""}
-              fullWidth
-            />
-          </Grid>
+        <Grid
+          container
+          item
+          xs={12}
+          sm={8}
+          justifyContent={"flex-start"}
+          spacing={2}
+        >
+          {children(register)}
         </Grid>
         <Grid
           container
