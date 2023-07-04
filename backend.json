@@ -9,6 +9,11 @@
       "path": "/menus-register",
       "name": "Cadastro de Menus",
       "id": "0.3836787999002116"
+    },
+    {
+      "id": "57b8420b-d6ff-4ae0-a84a-35bac1c55df5",
+      "path": "/teste",
+      "name": "Teste"
     }
   ],
   "teste": {

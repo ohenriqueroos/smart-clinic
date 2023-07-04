@@ -6,14 +6,23 @@ import Table from "../../components/Table/Table";
 import { GridColDef } from "@mui/x-data-grid";
 import { useCallback, useEffect, useState } from "react";
 import { menusService } from "../../services/menus.service";
+import { useTranslation } from "react-i18next";
+
+const translationPath = "pages.register.menus.";
 
 const MenusRegister = () => {
   const [menusList, setMenusList] = useState([]);
+  const { t } = useTranslation();
+
   const columns: GridColDef[] = [
-    { field: "path", headerName: "Link", width: 500 },
+    {
+      field: "path",
+      headerName: `${t(translationPath + "menus_link")}`,
+      width: 500,
+    },
     {
       field: "name",
-      headerName: "Name",
+      headerName: `${t(translationPath + "menus_name")}`,
       width: 500,
     },
   ];
@@ -27,19 +36,19 @@ const MenusRegister = () => {
 
   useEffect(() => {
     loadMenus();
-  }, []);
+  }, [loadMenus]);
 
   const rows = menusList;
 
   return (
     <Box>
       <RegistersHeader
-        title="Cadastro de Menus"
-        subtitle="Tela para cadastro, edição e exclusão de menus"
+        title={t(translationPath + "menus")}
+        subtitle={t(translationPath + "menus_subtitle")}
         button={
           <Button variant="contained" startIcon={<AddIcon />}>
             <Link to="/menus-register/new" style={{ color: "#fff" }}>
-              Novo Menu
+              {t(translationPath + "menus_new")}
             </Link>
           </Button>
         }
