@@ -3,6 +3,7 @@ import FormContainer from "../../../components/FormContainer/FormContainer";
 import { Box, Grid, TextField } from "@mui/material";
 import { menusService } from "../../../services/menus.service";
 import { TMenusForm, menusFormSchema } from "./MenusFormSchema";
+import { FieldErrors } from "react-hook-form";
 
 const MenusRegisterForm = () => {
   const saveData = (data: TMenusForm) => {
@@ -16,7 +17,7 @@ const MenusRegisterForm = () => {
         subtitle="Tela para cadastro e edição de menu"
       />
       <FormContainer formSchema={menusFormSchema} saveData={saveData}>
-        {(register) => (
+        {(register, errors: FieldErrors<TMenusForm>) => (
           <>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -24,9 +25,9 @@ const MenusRegisterForm = () => {
                 size="small"
                 type="text"
                 autoFocus
-                // error={errors.path === undefined ? false : true}
+                error={errors.path ? true : false}
                 {...register("path")}
-                // helperText={errors.path?.message || ""}
+                helperText={errors.path?.message}
                 fullWidth
               />
             </Grid>
@@ -35,9 +36,9 @@ const MenusRegisterForm = () => {
                 label="Name"
                 size="small"
                 type="text"
-                // error={errors.path === undefined ? false : true}
+                error={errors.name ? true : false}
                 {...register("name")}
-                // helperText={errors.path?.message || ""}
+                helperText={errors.name?.message}
                 fullWidth
               />
             </Grid>

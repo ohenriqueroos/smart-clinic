@@ -1,5 +1,5 @@
 import { Button, Grid, Paper } from "@mui/material";
-import { UseFormRegister, useForm } from "react-hook-form";
+import { FieldErrors, UseFormRegister, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ZodType } from "zod";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +9,7 @@ import { ReactNode } from "react";
 interface IFormContainer<T extends object> {
   formSchema: ZodType<T>;
   saveData: (data: any) => void;
-  children: (register: UseFormRegister<T>) => ReactNode;
+  children: (register: UseFormRegister<T>, errors: FieldErrors<T>) => ReactNode;
 }
 
 const FormContainer = ({
@@ -49,7 +49,7 @@ const FormContainer = ({
           justifyContent={"flex-start"}
           spacing={2}
         >
-          {children(register)}
+          {children(register, errors)}
         </Grid>
         <Grid
           container
