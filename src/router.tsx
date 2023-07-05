@@ -3,8 +3,13 @@ import WelcomePage from "./pages/Welcome/WelcomePage";
 import RootPage from "./pages/RootPage";
 import MenusRegister from "./pages/MenusRegister/MenusRegister";
 import MenusRegisterForm from "./pages/MenusRegister/MenusRegisterForm/MenusRegisterForm";
+import RegisterPage from "./pages/Register/Register";
 
 const router = createBrowserRouter([
+  {
+    path: "/register",
+    element: <RegisterPage />,
+  },
   {
     path: "/",
     element: <RootPage />,
