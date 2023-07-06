@@ -16,6 +16,20 @@ const en_US = {
             menus_name: "The name is required",
           },
         },
+        users: {
+          user_register: "Register",
+          user_username: "Username",
+          user_email: "Email",
+          user_password: "Password",
+          user_cancel_button: "Cancel",
+          user_register_button: "Register",
+          errors: {
+            username: "The username should contains at least 4 characteres",
+            email: "The email is required",
+            password:
+              "The password should be at least 8 characteres with at least 1 capital charactere, 1 number and 1 special charactere",
+          },
+        },
       },
     },
   },

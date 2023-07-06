@@ -11,5 +11,18 @@
       "id": "0.3836787999002116"
     }
   ],
-  "users": []
+  "users": [
+    {
+      "id": "49a5c44c-b0de-46ca-ab63-11be3e559a13",
+      "username": "ohenriqueroos",
+      "email": "henriquemroos21@gmail.com",
+      "password": "Matheus31@"
+    },
+    {
+      "id": "59e5563d-6356-42eb-8040-43c8ebaa634d",
+      "username": "duda__abreu",
+      "email": "eduarda.abreu@gmail.com",
+      "password": "Duda123@"
+    }
+  ]
 }

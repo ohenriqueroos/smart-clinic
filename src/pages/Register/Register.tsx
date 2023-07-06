@@ -1,23 +1,56 @@
-import { Box, Card, CardMedia, Grid, Stack } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardContent,
+  CardMedia,
+  Grid,
+  Typography,
+} from "@mui/material";
 import clinicImage from "../../assets/clinic_image.jpg";
+import { useTranslation } from "react-i18next";
+import RegisterForm from "./RegisterForm/RegisterForm";
+
+const translationPath = "pages.register.users.";
 
 const RegisterPage = () => {
+  const { t } = useTranslation();
+
   return (
-    <Box sx={{ backgroundColor: "#fafafa", width: "100vw", height: "100vh" }}>
+    <Box
+      sx={{
+        backgroundColor: "#fafafa",
+        width: "100vw",
+        height: "100vh",
+      }}
+    >
       <Grid
         container
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
+        justifyContent={"center"}
+        sx={{ position: "relative", top: "20%" }}
       >
-        <Grid item>
-          <Card sx={{ display: "flex", maxWidth: 600, height: 300 }}>
+        <Grid item sm={6}>
+          <Card sx={{ display: "flex", maxWidth: 800, height: 400 }}>
             <CardMedia
               component="img"
-              sx={{ width: 200 }}
+              sx={{ maxWidth: 200 }}
               image={clinicImage}
               alt="Live from space album cover"
             />
+            <CardContent sx={{ width: "100%", p: 5 }}>
+              <Grid container>
+                <Grid item sm={12}>
+                  <Typography
+                    variant="h5"
+                    sx={{ textAlign: "center", fontWeight: 700 }}
+                  >
+                    {t(translationPath + "user_register")}
+                  </Typography>
+                </Grid>
+                <Grid item sm={12}>
+                  <RegisterForm />
+                </Grid>
+              </Grid>
+            </CardContent>
           </Card>
         </Grid>
       </Grid>

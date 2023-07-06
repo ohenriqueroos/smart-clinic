@@ -16,6 +16,20 @@ const pt_BR = {
             menus_name: "O nome é obrigatório",
           },
         },
+        users: {
+          user_register: "Cadastre-se",
+          user_username: "Nome de usuário",
+          user_email: "E-mail",
+          user_password: "Senha",
+          user_cancel_button: "Cancelar",
+          user_register_button: "Cadastrar",
+          errors: {
+            username: "O nome do usuário deve conter ao menos 4 caracteres",
+            email: "O e-mail é obrigatório",
+            password:
+              "A senha deve possuir pelo menos 8 caracteres, com pelo menos 1 letra maiúscula, 1 número e 1 caractere especial",
+          },
+        },
       },
     },
   },

@@ -32,7 +32,7 @@ const MenusRegisterForm = () => {
                 autoFocus
                 error={errors.path ? true : false}
                 {...register("path")}
-                helperText={errors.path?.message}
+                helperText={errors ? t(errors?.path?.message || "") : ""}
                 fullWidth
               />
             </Grid>
@@ -43,38 +43,12 @@ const MenusRegisterForm = () => {
                 type="text"
                 error={errors.name ? true : false}
                 {...register("name")}
-                helperText={errors.name?.message}
+                helperText={errors ? t(errors?.name?.message || "") : ""}
                 fullWidth
               />
             </Grid>
           </>
         )}
-        {/* {({register}) => (
-          <Grid item xs={12} sm={6}>
-          <TextField
-            label="Link"
-            size="small"
-            type="text"
-            autoFocus
-            // error={errors.path === undefined ? false : true}
-            {...register("path")}
-            // helperText={errors.path?.message || ""}
-            fullWidth
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            label="Name"
-            size="small"
-            type="text"
-            autoFocus
-            // error={errors.path === undefined ? false : true}
-            {...register("path")}
-            // helperText={errors.path?.message || ""}
-            fullWidth
-          />
-        </Grid>
-        )} */}
       </FormContainer>
     </Box>
   );
